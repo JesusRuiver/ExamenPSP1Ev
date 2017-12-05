@@ -11,10 +11,11 @@ package ejercicio2;
  */
 public class Gui extends javax.swing.JFrame {
 
-    private int minutos, horas, segundos /**
-             * Creates new form Gui
-             */
+    private int minutos, horas, segundos;
 
+    /**
+     * Creates new form Gui
+     */
     public Gui() {
         initComponents();
     }
@@ -98,7 +99,8 @@ public class Gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
-        Thread t = new (Thread)
+        Thread t = new Thread(new HiloReloj(this));
+        t.start();
     }//GEN-LAST:event_jButtonIniciarActionPerformed
 
     /**
@@ -151,7 +153,7 @@ public class Gui extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelReloj;
     // End of variables declaration//GEN-END:variables
 
-    void suma() { //Suma a los labes
+    void suma() { //Suma a los labels
         if (segundos != 59) {
             segundos++;
         } else {
@@ -172,17 +174,22 @@ public class Gui extends javax.swing.JFrame {
     }
 
     private void muestraDisplay() {
-           int su,sd,mu,md,hu,hd;
-           
-           su = segundos %10;
-           sd = segundos/ 10;
-           
-           mu = minutos %10;
-           md = minutos / 10;
-           
-           hu = horas %10;
-           hd = horas / 10;
-           
-           jLa
+        int segundosUnidad, segundosDecena, minutosUnidad, minutosDecena, horasUnidad, horasDecena;
+
+        segundosUnidad = segundos % 10;
+        segundosDecena = segundos / 10;
+
+        minutosUnidad = minutos % 10;
+        minutosDecena = minutos / 10;
+
+        horasUnidad = horas % 10;
+        horasDecena = horas / 10;
+
+        jLabelUnidadSegundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ejercicio2img/" + segundosUnidad + ".gif")));
+        jLabelDecenaSegundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ejercicio2img/" + segundosDecena + ".gif")));
+        jLabelUnidadMinuto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ejercicio2img/" + minutosUnidad + ".gif")));
+        jLabelDecenaMinuto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ejercicio2img/" + minutosDecena + ".gif")));
+        jLabelUnidadHora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ejercicio2img/" + horasUnidad + ".gif")));
+        jLabelDecenaHora.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ejercicio2img/" + horasDecena + ".gif")));
     }
 }

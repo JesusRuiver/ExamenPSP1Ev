@@ -25,7 +25,6 @@ public class HiloReloj implements Runnable {
         while (true) {
             try {
                 gui.suma();
-
                 Thread.sleep(10);
             } catch (InterruptedException ex) {
                 Logger.getLogger(HiloReloj.class.getName()).log(Level.SEVERE, null, ex);
